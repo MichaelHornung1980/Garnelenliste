@@ -1,0 +1,135 @@
+#root {
+    width: 23rem;
+    background-image: url("../img/temp720_0_600x600.jpeg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#container {
+    /*    opacity: 80%;*/
+}
+
+:root {
+    --mdc-theme-primary: rgb(72, 236, 173);
+    --mdc-theme-secondary: rgba(236, 231, 230, 0.71);
+}
+
+dt {
+    background-color: rgb(252, 252, 252);
+    /* color: var(--mdc-theme-on-primary);*/
+    font-family: "Al Nile"
+}
+
+h2, dd {
+    background-color: var(--mdc-theme-on-primary);
+}
+
+.aktiv {
+    background-color: rgba(175, 236, 217, 0.65)
+}
+
+.inaktiv {
+    background-color: rgba(154, 185, 234, 0.74)
+}
+
+h1, h2, dl {
+    margin: 0;
+}
+
+h2 {
+    padding: 0 0 10px 0;
+}
+
+i.material-icons {
+    cursor: pointer;
+    float: right;
+}
+
+button.material-icons {
+    font-size: inherit;
+    vertical-align: bottom
+}
+
+[type="checkbox"] {
+    vertical-align: top;
+    margin-right: 8px;
+}
+
+dt {
+    display: flex;
+    font-weight: 700;
+    padding: 3px 5px;
+    font-family: 'Kdam Thomor Pro', sans-serif;
+}
+
+dt span {
+    width: 100%;
+}
+
+dt, dd {
+    height: 2rem;
+    font-size: 1.2rem;
+}
+
+dd {
+    display: flex;
+    margin-left: 0;
+    margin: 3px;
+}
+
+dd label {
+    padding: 3px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+dd label input[type="checkbox"] {
+    margin: 6px 6px;
+}
+
+dd input[type="search"] {
+    margin-left: 1.5rem;
+}
+
+.mdc-text-field {
+    height: 2rem;
+}
+
+label {
+    width: 91%;
+    cursor: pointer
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mdc-dialog {
+    opacity: 100%;
+}
+
+.mdc-dialog__surface {
+    position: absolute;
+    top: 10%;
+    left: 25px;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
