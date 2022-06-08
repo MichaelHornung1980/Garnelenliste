@@ -1,14 +1,13 @@
 import React from 'react'
 import GruppenTag from './components/GruppenTag'
 import GruppenDialog from './components/GruppenDialog'
+import SortierDialog from "./components/SortierDialog";
 import Modell from './model/Shopping'
-
 
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.initialisieren()
     this.state = {
       aktiveGruppe: null,
       showGruppenDialog: false,
@@ -18,19 +17,20 @@ class App extends React.Component {
     }
   }
 
-  initialisieren() {
-    let neocaridinia = Modell.gruppeHinzufuegen("Neocaridinia")
-    let garnele1 = neocaridinia.artikelHinzufuegen("Blue Jelly")
-    garnele1.gekauft = true
-    neocaridinia.artikelHinzufuegen("Blue Dream")
-    let caradina = Modell.gruppeHinzufuegen("Caradina")
-    let garnele2 = caradina.artikelHinzufuegen("Black Bee")
-    garnele2.gekauft = true
-    caradina.artikelHinzufuegen("Red Bee")
-    let skyfish = Modell.gruppeHinzufuegen("Skyfish Shrimps")
-    let garnele3 = skyfish.artikelHinzufuegen("Red Mosura Tiger")
-    garnele3.gekauft = true
-    skyfish.artikelHinzufuegen("Blue Boa")
+  componentDidMount() {
+    Modell.laden()
+    // Auf-/Zu-Klapp-Zustand aus dem LocalStorage laden
+    let einkaufenAufgeklappt = localStorage.getItem("einkaufenAufgeklappt")
+    einkaufenAufgeklappt = (einkaufenAufgeklappt == null) ? true : JSON.parse(einkaufenAufgeklappt)
+
+    let erledigtAufgeklappt = localStorage.getItem("erledigtAufgeklappt")
+    erledigtAufgeklappt = (erledigtAufgeklappt == null) ? false : JSON.parse(erledigtAufgeklappt)
+
+    this.setState({
+      aktiveGruppe: Modell.aktiveGruppe,
+      einkaufenAufgeklappt: einkaufenAufgeklappt,
+      erledigtAufgeklappt: erledigtAufgeklappt,
+    })
   }
 
   einkaufenAufZuKlappen() {
@@ -40,6 +40,12 @@ class App extends React.Component {
 
   erledigtAufZuKlappen() {
     this.setState({erledigtAufgeklappt: !this.state.erledigtAufgeklappt})
+  }
+
+  lsLoeschen() {
+    if (window.confirm("Wollen Sie wirklich alles löschen?!")) {
+      localStorage.clear()
+    }
   }
 
   artikelChecken = (artikel) => {
@@ -65,6 +71,13 @@ class App extends React.Component {
     Modell.aktiveGruppe = gruppe
     Modell.informieren("[App] Gruppe \"" + gruppe.name + "\" ist nun aktiv")
     this.setState({aktiveGruppe: Modell.aktiveGruppe})
+  }
+
+  closeSortierDialog = (reihenfolge, sortieren) => {
+    if (sortieren) {
+      Modell.sortieren(reihenfolge)
+    }
+    this.setState({showSortierDialog: false})
   }
 
   render() {
@@ -98,6 +111,11 @@ class App extends React.Component {
       gruppenDialog = <GruppenDialog
         gruppenListe={Modell.gruppenListe}
         onDialogClose={() => this.setState({showGruppenDialog: false})}/>
+    }
+
+    let sortierDialog = ""
+    if (this.state.showSortierDialog) {
+      sortierDialog = <SortierDialog onDialogClose={this.closeSortierDialog}/>
     }
 
     return (
@@ -150,17 +168,20 @@ class App extends React.Component {
             <span className="material-icons">bookmark_add</span>
             <span className="mdc-button__ripple"></span> Gruppen
           </button>
-          <button className="mdc-button mdc-button--raised">
+          <button className="mdc-button mdc-button--raised"
+                  onClick={() => this.setState({showSortierDialog: true})}>
             <span className="material-icons">sort</span>
             <span className="mdc-button__ripple"></span> Sort
           </button>
-          <button className="mdc-button mdc-button--raised">
-            <span className="material-icons">settings</span>
-            <span className="mdc-button__ripple"></span> Setup
+          <button className="mdc-button mdc-button--raised"
+                  onClick={this.lsLoeschen}>
+            <span className="material-icons">clear_all</span>
+            <span className="mdc-button__ripple"></span> Clear
           </button>
         </footer>
 
         {gruppenDialog}
+        {sortierDialog}
       </div>
     )
   }

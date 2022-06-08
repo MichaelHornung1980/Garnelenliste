@@ -12,14 +12,14 @@
 }
 
 :root {
-    --mdc-theme-primary: rgb(72, 236, 173);
-    --mdc-theme-secondary: rgba(236, 231, 230, 0.71);
+    --mdc-theme-primary: rgb(112, 114, 112);
+    --mdc-theme-secondary: rgba(246, 245, 245, 0.71);
 }
 
 dt {
-    background-color: rgb(252, 252, 252);
+    background-color: rgba(64, 73, 73, 0.6);
     /* color: var(--mdc-theme-on-primary);*/
-    font-family: "Al Nile"
+    font-family: "Roboto"
 }
 
 h2, dd {
@@ -36,20 +36,30 @@ h2, dd {
 
 h1, h2, dl {
     margin: 0;
+
+}
+
+h1 {
+    color: coral;
 }
 
 h2 {
     padding: 0 0 10px 0;
 }
 
+
 i.material-icons {
     cursor: pointer;
     float: right;
+    color: #030303;
+
 }
 
 button.material-icons {
     font-size: inherit;
     vertical-align: bottom
+
+
 }
 
 [type="checkbox"] {
@@ -65,18 +75,23 @@ dt {
 }
 
 dt span {
-    width: 100%;
+    width: 1000%;
+
+
 }
 
 dt, dd {
     height: 2rem;
     font-size: 1.2rem;
+
 }
 
 dd {
     display: flex;
     margin-left: 0;
     margin: 3px;
+
+
 }
 
 dd label {
@@ -105,16 +120,23 @@ label {
 footer {
     display: flex;
     justify-content: space-between;
+
+
 }
 
 .mdc-dialog {
     opacity: 100%;
+
+
 }
 
 .mdc-dialog__surface {
     position: absolute;
     top: 10%;
     left: 25px;
+
+
+
 }
 
 .material-icons {
@@ -131,5 +153,8 @@ footer {
     direction: ltr;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
+    color: #212121;
+
+
 }
 

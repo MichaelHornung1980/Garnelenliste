@@ -45,6 +45,7 @@ class GruppenTag extends React.Component {
         <dt className={this.props.aktiv ? "aktiv" : "inaktiv"}
             onClick={() => this.props.aktiveGruppeHandler(gruppe)}>
           <span>{gruppe.name}</span>
+          <img src={"../../public.markt.jpg"}/>
           <i className="material-icons"
              onClick={() => this.aufZuKlappen()}>
             {this.state.aufgeklappt ? 'expand_more' : 'expand_less'}
