@@ -4,6 +4,7 @@ import GruppenDialog from './components/GruppenDialog'
 import Modell from './model/Shopping'
 
 
+
 class App extends React.Component {
   constructor(props) {
     super(props)
